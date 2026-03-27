@@ -1,0 +1,45 @@
+/* --- ESTILO BASE (Móvil) --- */
+/* Por defecto, los divs ocupan el 100% (uno encima de otro) */
+.responsive-box {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* Para que el padding no rompa el ancho */
+}
+
+.responsive-box img {
+    width: 100%;
+    height: auto;
+}
+
+/* Para evitar que los floats rompan el diseño del contenedor padre */
+.main-content::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* --- CONSULTA #1: TABLET VIEW (772px) --- */
+@media (min-width: 772px) {
+    .responsive-box {
+        width: 45%;          /* Lo que pide la instrucción */
+        float: left;         /* Para alinearlos horizontalmente */
+        margin: 2.5%;        /* Espacio entre ellos (45+45+5 = 100%) */
+    }
+
+    .responsive-box img {
+        max-height: 30vh;    /* No más del 30% de la altura de la ventana */
+        width: auto;         /* Mantiene la proporción */
+    }
+}
+
+/* --- CONSULTA #2: LARGE SCREEN VIEW (998px) --- */
+@media (min-width: 998px) {
+    .responsive-box {
+        width: 30%;          /* Lo que pide la instrucción */
+        margin: 1.66%;       /* Ajustamos margen para que quepan 3 (30*3 + margen = 100) */
+    }
+    
+    /* Nota: El float:left y la altura de imagen se mantienen desde la regla anterior */
+}
